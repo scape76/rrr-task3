@@ -24,7 +24,9 @@ export class NotesService {
   }
 
   getAll(): Promise<Note[]> {
-    return this.noteModel.findAll({});
+    return this.noteModel.findAll({
+      order: [['createdAt', 'DESC']],
+    });
   }
 
   getOne(id: string): Promise<Note> {
@@ -82,5 +84,4 @@ export class NotesService {
 
     return categoryStats;
   }
-
 }
