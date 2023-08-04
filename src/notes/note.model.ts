@@ -8,7 +8,7 @@ import {
 } from 'sequelize-typescript';
 import { Category } from 'src/types/notes';
 
-@Table({ tableName: 'notes' })
+@Table({ tableName: 'Notes' })
 export class Note extends Model {
   @Column({
     type: DataType.INTEGER,
