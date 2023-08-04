@@ -4,6 +4,8 @@ import { ConfigModule } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Note } from './notes/note.model';
 import { NotesModule } from './notes/notes.module';
+import { APP_FILTER } from '@nestjs/core';
+import { HttpExceptionFilter } from './helpers/httpExceptionsFilter.filter';
 
 @Module({
   imports: [
@@ -19,6 +21,12 @@ import { NotesModule } from './notes/notes.module';
       autoLoadModels: true,
     }),
     NotesModule,
+  ],
+  providers: [
+    {
+      provide: APP_FILTER,
+      useClass: HttpExceptionFilter,
+    },
   ],
 })
 export class AppModule {}
