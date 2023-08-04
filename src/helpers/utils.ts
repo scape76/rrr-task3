@@ -1,4 +1,7 @@
-import { Category, Note } from 'src/types/notes';
+import { Note } from "src/notes/note.model";
+import { Category } from "src/types/notes";
+
+type NoteT = InstanceType<typeof Note>;
 
 export const getCreatedTimeToString = (date: Date): string => {
   const months = [
@@ -23,7 +26,7 @@ export function getNotesByCategory(category: Category, notes: Note[]) {
   return notes.filter((note) => note.category === category);
 }
 
-export function countArchivedNotes(notes: Note[]) {
+export function countArchivedNotes(notes: NoteT[]) {
   return notes.reduce(
     (count, note) => (note.isArchived ? count + 1 : count),
     0,

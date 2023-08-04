@@ -2,68 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreateTodoDto, EditTodoDto } from './dto';
 import { v4 as uuidv4 } from 'uuid';
-import { Category } from 'src/types/notes';
 import { getDataByCategory } from 'src/helpers/utils';
 import { Note } from './note.model';
+import { Category } from 'src/types/notes';
 
-// let notes: Note[] = [
-//   {
-//     id: uuidv4(),
-//     category: Category.TASK,
-//     content: 'tomatoes, bread 3/9/2021',
-//     createdAt: new Date(),
-//     name: 'Shopping list',
-//     isArchived: false,
-//   },
-//   {
-//     id: uuidv4(),
-//     category: Category.THOUGHT,
-//     content: 'build a house 21/01/2022',
-//     createdAt: new Date(),
-//     name: 'idk',
-//     isArchived: false,
-//   },
-//   {
-//     id: uuidv4(),
-//     category: Category.THOUGHT,
-//     content: 'build a house 23/09/2022 24/10/2022',
-//     createdAt: new Date(),
-//     name: 'idk',
-//     isArchived: false,
-//   },
-//   {
-//     id: uuidv4(),
-//     category: Category.IDEA,
-//     content: 'plant a tree',
-//     createdAt: new Date(),
-//     name: '3',
-//     isArchived: false,
-//   },
-//   {
-//     id: uuidv4(),
-//     category: Category.THOUGHT,
-//     content: 'build a house 09/23/2022 10/24/2022',
-//     createdAt: new Date(),
-//     name: 'idk',
-//     isArchived: false,
-//   },
-//   {
-//     id: uuidv4(),
-//     category: Category.THOUGHT,
-//     content: 'build a house',
-//     createdAt: new Date(),
-//     name: 'idk',
-//     isArchived: true,
-//   },
-//   {
-//     id: uuidv4(),
-//     category: Category.IDEA,
-//     content: 'run',
-//     createdAt: new Date(),
-//     name: 'idk',
-//     isArchived: true,
-//   },
-// ];
 
 @Injectable()
 export class NotesService {

@@ -7,7 +7,6 @@ import {
 } from 'class-validator';
 import { Category } from 'src/types/notes';
 
-
 export class CreateTodoDto {
   @MinLength(3, {
     message: 'name is too short',

@@ -1,38 +1,32 @@
 import {
   Column,
-  Model,
-  Table,
-  PrimaryKey,
   DataType,
+  Model,
+  PrimaryKey,
+  Table,
+  AutoIncrement,
 } from 'sequelize-typescript';
-import { v4 as uuidv4 } from 'uuid';
+import { Category } from 'src/types/notes';
 
-enum Category {
-  IDEA = 'idea',
-  THOUGHT = 'thought',
-  TASK = 'task',
-}
-
-@Table
+@Table({ tableName: 'notes' })
 export class Note extends Model {
-  @PrimaryKey
-  @Column({ defaultValue: uuidv4() })
-  id: string;
+  @Column({
+    type: DataType.INTEGER,
+    unique: true,
+    autoIncrement: true,
+    primaryKey: true,
+  })
+  id: number;
 
-  @Column
+  @Column({ type: DataType.STRING, allowNull: false })
   name: string;
 
-  @Column
+  @Column({ type: DataType.STRING, allowNull: false })
   content: string;
 
-  @Column({
-    type: DataType.ENUM(...Object.values(Category)),
-  })
+  @Column({ type: DataType.ENUM(...Object.values(Category)), allowNull: false })
   category: Category;
 
-  @Column({ defaultValue: new Date() })
-  createdAt: Date;
-
-  @Column({ defaultValue: false })
+  @Column({ type: DataType.BOOLEAN, defaultValue: false })
   isArchived: boolean;
 }

@@ -1,14 +1,18 @@
-version: "3"
+version: "3.9"
 services:
   postgres:
-    image: postgres:15.1
+    image: postgres
+    restart: always
+    container_name: nest-postgres
     networks:
       - postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: example
+      PGDATA: /data/postgres
     volumes:
       - /data/postgres:/data/postgres
-    env_file:
-      - docker.env
-
 
   nestjs-api:
     image: nestjs-api
@@ -20,7 +24,7 @@ services:
       - postgres
     networks:
       - postgres
-
+    
   pgadmin:
     image: dpage/pgadmin4:6.18
     networks:

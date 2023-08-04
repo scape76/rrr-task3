@@ -16,7 +16,7 @@ export class NotesController {
   constructor(private notesService: NotesService) {}
 
   @Post('')
-  createNote(@Body() dto: CreateTodoDto) {
+  async createNote(@Body() dto: CreateTodoDto) {
     return this.notesService.create(dto);
   }
 
@@ -32,7 +32,7 @@ export class NotesController {
 
   @Get('/stats')
   getNotesData() {
-    console.log("here")
+    console.log('here');
     return this.notesService.getData();
   }
 
@@ -45,5 +45,4 @@ export class NotesController {
   editNote(@Param('id') id: string, @Body() dto: EditTodoDto) {
     return this.notesService.edit(id, dto);
   }
-
 }
