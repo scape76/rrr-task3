@@ -16,6 +16,7 @@ export class EditTodoDto {
     message: 'name is too long',
   })
   @IsString()
+  @IsOptional()
   name: string;
 
   @MinLength(3, {
@@ -25,12 +26,14 @@ export class EditTodoDto {
     message: 'content is too long',
   })
   @IsString()
+  @IsOptional()
   content: string;
 
   @IsEnum(Category)
+  @IsOptional()
   category: Category;
 
-  @IsOptional()
   @IsBoolean()
-  isArchived?: boolean;
+  @IsOptional()
+  isArchived: boolean;
 }
