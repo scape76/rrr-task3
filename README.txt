@@ -1,7 +1,8 @@
-1. Build an image
+1. Copy .env.example to .env
+2. Build an image
 docker build --tag "nestjs-api" .
-2. Run docker-compose 
+3. Run docker-compose 
 docker-compose up
-3. Seed the database
+4. Seed the database
 npm run db:seed
-4. app is running on localhost:3000
+5. app is running on localhost:3000
